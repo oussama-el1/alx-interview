@@ -4,6 +4,7 @@
 - You can assume n will be always an integer
 """
 
+
 def pascal_triangle(n):
     if n <= 0:
         return []
