@@ -9,10 +9,8 @@ Create a function def pascal_triangle(n): that returns a list of lists of
 
 def pascal_triangle(n):
   """ function create a pascal triangle with 'n' row"""
-  
   if n <= 0:
       return []
-  
   triangle = []
   for i in range(n):
     row = [1]
@@ -22,5 +20,4 @@ def pascal_triangle(n):
       else:
         row.append(triangle[i - 1][j] + triangle[i - 1][j - 1])
     triangle.append(row)
-
   return triangle
