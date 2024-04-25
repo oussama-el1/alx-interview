@@ -16,7 +16,6 @@ def pascal_triangle(n):
   triangle = []
   for i in range(n):
     row = [1]
-    j = 1
     for j in range(1, i + 1):
       if j == i:
         row.append(1)
