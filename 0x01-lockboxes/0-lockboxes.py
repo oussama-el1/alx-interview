@@ -13,7 +13,6 @@ contain keys to the other boxes.
     -The first box boxes[0] is unlocked
     -Return True if all boxes can be opened, else return False
 """
-from typing import List
 
 
 def canUnlockAll(boxes):
@@ -27,7 +26,7 @@ def canUnlockAll(boxes):
     """
     num_boxes: int = len(boxes)
     visited: bool = [False] * num_boxes
-    queue: List = [0]
+    queue = [0]
     visited[0] = True
 
     while queue:
