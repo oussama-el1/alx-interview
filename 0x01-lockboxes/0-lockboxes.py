@@ -26,8 +26,8 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
     :rtype: bool
     """
     n = len(boxes)
-    visited = [False] * n
-    queue = [0]
+    visited: List[bool] = [False] * n
+    queue: List[int] = [0]
     visited[0] = True
 
     while queue:
