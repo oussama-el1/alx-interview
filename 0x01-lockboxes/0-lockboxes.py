@@ -18,28 +18,24 @@ from typing import List
 
 def canUnlockAll(boxes: List[List[int]]) -> bool:
     """
-    Check if all boxes can be unlocked by using their keys.
-    Boxes are represented as a list of lists, where each inner list contains
-    the keys to unlock the corresponding box.
+    Checks if all boxes can be unlocked by keys in each box.
 
-    Args:
-    boxes (List[List[int]]): List of lists, where each inner list contains
-    the keys to unlock the corresponding box.
-
-    Returns:
-    bool: True if all boxes can be unlocked, False otherwise.
+    :param boxes: List of lists, where each inner list.
+    :type boxes: List[List[int]]
+    :return: True if all boxes can be unlocked, False otherwise.
+    :rtype: bool
     """
-    num_boxes: int = len(boxes)
-    visited: List[bool] = [False] * num_boxes
-    queue: List = [0]
+    n = len(boxes)
+    visited = [False] * n
+    queue = [0]
     visited[0] = True
 
     while queue:
-        current_box = queue.pop(0)
-
-        for key in boxes[current_box]:
-            if key < num_boxes and not visited[key]:
-                visited[key] = True
-                queue.append(key)
+        node = queue.pop(0)
+        for neighbor in boxes[node]:
+            if 0 < neighbor < n and not visited[neighbor]:
+                visited[neighbor] = True
+                queue.append(neighbor)
 
     return all(visited)
+
