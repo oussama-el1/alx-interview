@@ -13,10 +13,9 @@ contain keys to the other boxes.
     -The first box boxes[0] is unlocked
     -Return True if all boxes can be opened, else return False
 """
-from typing import List
 
 
-def canUnlockAll(boxes: List[List[int]]) -> bool:
+def canUnlockAll(boxes):
     """
     Checks if all boxes can be unlocked by keys in each box.
 
@@ -25,16 +24,21 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
     :return: True if all boxes can be unlocked, False otherwise.
     :rtype: bool
     """
+    if not boxes:
+        return False
+
     n = len(boxes)
     visited = [False] * n
-    queue = [0]
     visited[0] = True
+    keys = set([0])
 
-    while queue:
-        node = queue.pop(0)
-        for neighbor in boxes[node]:
-            if not visited[neighbor]:
-                visited[neighbor] = True
-                queue.append(neighbor)
+    while keys:
+        new_keys = set()
+        for key in keys:
+            for box in boxes[key]:
+                if 0 <= box < n and not visited[box]:
+                    visited[box] = True
+                    new_keys.add(box)
+        keys = new_keys
 
     return all(visited)
