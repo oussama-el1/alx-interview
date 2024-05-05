@@ -16,7 +16,7 @@ contain keys to the other boxes.
 from typing import List
 
 
-def canUnlockAll(boxes: List[List[int]]) -> bool:
+def canUnlockAll(boxes):
     """
     Checks if all boxes can be unlocked by keys in each box.
 
