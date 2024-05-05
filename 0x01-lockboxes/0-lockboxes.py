@@ -18,27 +18,23 @@ from typing import List
 
 def canUnlockAll(boxes: List[List[int]]) -> bool:
     """
-    :param boxes:
-    :type boxes:
-    :return:
-    :rtype:
-    """
-    startbox = 0
-    n = len(boxes)
-    nodes_queue = []
-    visited = [False] * n
-    nodes_queue.append(startbox)
-    visited[startbox] = True
-    visited_nodes = [startbox]
+    Checks if all boxes can be unlocked by keys in each box.
 
-    while len(nodes_queue) > 0:
-        node = nodes_queue.pop(0)
+    :param boxes: List of lists, where each inner list.
+    :type boxes: List[List[int]]
+    :return: True if all boxes can be unlocked, False otherwise.
+    :rtype: bool
+    """
+    n = len(boxes)
+    visited = [False] * n
+    queue = [0]
+    visited[0] = True
+
+    while queue:
+        node = queue.pop(0)
         for neighbor in boxes[node]:
             if not visited[neighbor]:
                 visited[neighbor] = True
-                nodes_queue.append(neighbor)
-                visited_nodes.append(neighbor)
-    if n == len(visited_nodes):
-        return True
-    else:
-        return False
+                queue.append(neighbor)
+
+    return all(visited)
