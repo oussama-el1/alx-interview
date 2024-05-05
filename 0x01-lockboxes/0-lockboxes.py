@@ -38,4 +38,3 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
                 queue.append(neighbor)
 
     return all(visited)
-
