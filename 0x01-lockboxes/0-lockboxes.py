@@ -20,21 +20,21 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
     """
     Checks if all boxes can be unlocked by keys in each box.
 
-    :param boxes: List of lists, where each inner list.
+    :param boxes: List of lists, where each inner list represents the keys.
     :type boxes: List[List[int]]
     :return: True if all boxes can be unlocked, False otherwise.
     :rtype: bool
     """
-    n = len(boxes)
-    visited = [False] * n
-    queue = [0]
+    num_boxes: int = len(boxes)
+    visited: bool = [False] * num_boxes
+    queue: List = [0]
     visited[0] = True
 
     while queue:
-        node = queue.pop(0)
-        for neighbor in boxes[node]:
-            if 0 <= neighbor < n and not visited[neighbor]:
-                visited[neighbor] = True
-                queue.append(neighbor)
+        current_box = queue.pop(0)
+        for key in boxes[current_box]:
+            if 0 <= key < num_boxes and not visited[key]:
+                visited[key] = True
+                queue.append(key)
 
     return all(visited)
