@@ -20,7 +20,7 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
     """
     Checks if all boxes can be unlocked by keys in each box.
 
-    :param boxes: List of lists, where each inner list represents the keys.
+    :param boxes: List of lists, where each inner list.
     :type boxes: List[List[int]]
     :return: True if all boxes can be unlocked, False otherwise.
     :rtype: bool
