@@ -16,29 +16,16 @@ def isprime(n: int) -> bool:
 
 def minOperations(n: int):
     """ minOperations : function """
-    cp = n
-    if cp < 1:
+    if n < 1:
         return 0
 
-    primes = []
+    factors = []
+    divisor = 2
 
-    if cp == 4:
-        end = 3
-    else:
-        end = int(cp / 2)
+    while n > 1:
+        while n % divisor == 0:
+            factors.append(divisor)
+            n //= divisor
+        divisor += 1
 
-    for i in range(2, end):
-        if isprime(i) and cp % i == 0:
-            primes.append(i)
-            r = cp / i
-            if isprime(r):
-                primes.append(int(r))
-                break
-            else:
-                cp = r
-
-    s = 0
-    for prime in primes:
-        s = s + prime
-
-    return s
+    return sum(factors)
