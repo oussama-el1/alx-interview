@@ -14,22 +14,31 @@ def isprime(n: int) -> bool:
     return True
 
 
-def min_operations(n: int) -> int:
-    """Returns the minimum number of operations to reach n characters"""
-
-    if n < 1:
+def minOperations(n: int):
+    """ minOperations : function """
+    cp = n
+    if cp < 1:
         return 0
 
-    prime_factors = []
+    primes = []
 
-    for i in range(2, int(n / 2)):
-        if n % i == 0 and isprime(i):
-            prime_factors.append(i)
-            r = n / i
+    if cp == 4:
+        end = 3
+    else:
+        end = int(cp / 2)
+
+    for i in range(2, end):
+        if isprime(i) and cp % i == 0:
+            primes.append(i)
+            r = cp / i
             if isprime(r):
-                prime_factors.append(int(r))
+                primes.append(int(r))
                 break
             else:
-                n = r
+                cp = r
 
-    return sum(prime_factors)
+    s = 0
+    for prime in primes:
+        s = s + prime
+
+    return s
