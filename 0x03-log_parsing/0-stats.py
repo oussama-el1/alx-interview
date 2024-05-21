@@ -66,5 +66,6 @@ def get_data():
         else:
             continue
 
+
 if __name__ == "__main__":
     get_data()
