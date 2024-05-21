@@ -66,9 +66,5 @@ def get_data():
         else:
             continue
 
-    if line_count > 0:
-        print_data(data)
-
-
 if __name__ == "__main__":
     get_data()
