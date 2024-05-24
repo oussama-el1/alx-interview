@@ -44,9 +44,6 @@ def check_continuation_bytes(data, start_index, expected_bytes):
 
 def validUTF8(data: List[int]):
     """ validUTF8 """
-    if data == []:
-        return False
-
     i = 0
     while i < len(data):
         byte = data[i]
