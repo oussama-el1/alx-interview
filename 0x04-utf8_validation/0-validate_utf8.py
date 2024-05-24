@@ -44,32 +44,26 @@ def check_continuation_bytes(data, start_index, expected_bytes):
 
 def validUTF8(data: List[int]):
     """ validUTF8 """
+    if data == []:
+        return False
+
     i = 0
     while i < len(data):
         byte = data[i]
         if byte & 0b10000000 == 0 and byte <= 0b01111111:
-            print("single Byte")
             i += 1
         elif byte & 0b11100000 == 0b11000000:
-            print("2 Byte")
             if not check_continuation_bytes(data, i, 1):
                 return False
             i += 2
         elif byte & 0b11110000 == 0b11100000:
-            print("3 Byte")
             if not check_continuation_bytes(data, i, 2):
                 return False
             i += 3
         elif byte & 0b11111000 == 0b11110000:
-            print("4 Byte")
             if not check_continuation_bytes(data, i, 3):
                 return False
             i += 4
         else:
             return False
     return True
-
-
-if __name__ == "__main__":
-    test = [229, 65, 127, 256]
-    print(validUTF8(test))
