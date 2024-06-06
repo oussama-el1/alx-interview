@@ -1,1 +1,1 @@
-# 0x05-nqueens
+# N Queens
